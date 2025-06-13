@@ -2,12 +2,13 @@ const TelegramBot = require('node-telegram-bot-api');
 const axios = require('axios');
 
 // Используем переменные окружения для токена бота и URL сервера
-const token = process.env.TELEGRAM_BOT_TOKEN;  // Ваш токен от BotFather
+//const token = process.env.TELEGRAM_BOT_TOKEN;  // Ваш токен от BotFather
+const token = '7671395940:AAHwqDqy-PD8OfhFdjvCIjTE2u2yQ2yZ7wo';
 const bot = new TelegramBot(token, { polling: true });
 
 // Используем переменную окружения BASE_URL для ссылки на сервер
-const baseUrl = process.env.BASE_URL || 'http://localhost:3000'; // Если не указано, используется локальный сервер
-
+// const baseUrl = process.env.BASE_URL || 'http://localhost:3000'; // Если не указано, используется локальный сервер
+const baseUrl = 'https://newvaybcodingtrue.onrender.com/'
 // Хранилище для сессионного токена
 let sessionToken = null;
 
