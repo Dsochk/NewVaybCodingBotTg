@@ -1,12 +1,12 @@
 const TelegramBot = require('node-telegram-bot-api');
 const axios = require('axios');
 
-// Замените на ваш токен от BotFather
-const token = '7671395940:AAHwqDqy-PD8OfhFdjvCIjTE2u2yQ2yZ7wo';
+// Используем переменные окружения для токена бота и URL сервера
+const token = process.env.TELEGRAM_BOT_TOKEN;  // Ваш токен от BotFather
 const bot = new TelegramBot(token, { polling: true });
 
-// URL вашего локального сайта
-const baseUrl = 'https://newvaybcodingtrue.onrender.com';
+// Используем переменную окружения BASE_URL для ссылки на сервер
+const baseUrl = process.env.BASE_URL || 'http://localhost:3000'; // Если не указано, используется локальный сервер
 
 // Хранилище для сессионного токена
 let sessionToken = null;
@@ -32,7 +32,7 @@ bot.onText(/\/login (.+) (.+)/, async (msg, match) => {
     const login = match[1];
     const password = match[2];
     try {
-        const response = await axios.post('http://localhost:3000/login', {
+        const response = await axios.post(`${baseUrl}/login`, {
             login: login,
             password: password
         });
@@ -76,7 +76,7 @@ bot.onText(/\/list/, async (msg) => {
     }
     try {
         console.log('Sending request with token:', sessionToken);
-        const response = await axios.get('http://localhost:3000/api/items', {
+        const response = await axios.get(`${baseUrl}/api/items`, {
             headers: { 'Authorization': `Bearer ${sessionToken}` }
         });
         console.log('Response:', response.data);
