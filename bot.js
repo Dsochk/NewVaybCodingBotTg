@@ -6,7 +6,7 @@ const token = '7671395940:AAHwqDqy-PD8OfhFdjvCIjTE2u2yQ2yZ7wo';
 const bot = new TelegramBot(token, { polling: true });
 
 // URL вашего локального сайта
-const baseUrl = 'http://localhost:3000';
+const baseUrl = 'https://newvaybcodingtrue.onrender.com';
 
 // Хранилище для сессионного токена
 let sessionToken = null;
